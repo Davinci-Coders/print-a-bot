@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Apps
     'controls',
+    'colorful',
     #'rest_framework',
 
     ]

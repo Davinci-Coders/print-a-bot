@@ -24,9 +24,23 @@ def single_lightshow(request, lightshow_id):
     except LightShow.DoesNotExist:
         messages.add_message(request, messages.ERROR, 'Light show with ID {} does not exist.'.format(lightshow_id))
         return redirect(reverse('home'))
+
+    hexx = []
+
+    for step in lightshow.lightshowstep_set.all():
+        hexx.append(step.color)
+
+    for value in hexx:
+        value = value.lstrip('#')
+        lv = len(value)
+        rgb_list = list(int(value[i:i+lv/3], 16) for i in range(0, lv, lv/3))
+        setattr(lightshow, 'red', rgb_list[0])
+        setattr(lightshow, 'green', rgb_list[1])
+        setattr(lightshow, 'blue', rgb_list[2])
+
     context = {
-        'lightshow': lightshow
-    }
+        'lightshow': lightshow,
+        }
     return render(request, 'single_lightshow.html', context)
 
 
