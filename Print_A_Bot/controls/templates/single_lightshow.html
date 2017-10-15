@@ -16,6 +16,7 @@
 		<th>Green</th>
 		<th>Blue</th>
 		<th>Light</th>
+		<th>Color</th>
 		
 	</tr>
 {% for light_step in lightshow.lightshowstep_set.all %}
@@ -25,11 +26,11 @@
         <td>{{ light_step.green }}</td>
         <td>{{ light_step.blue }}</td>
         <td>{{ light_step.light }}</td>
+        <td>{{ light_step.hex }}</td>
     </tr>
 {% empty %}
     <h4>No Steps in this light show<h4>
 {% endfor %}
 </table>
-
 
 {% endblock content %}

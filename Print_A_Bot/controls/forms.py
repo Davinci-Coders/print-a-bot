@@ -15,5 +15,5 @@ class LightShowStepForm(forms.ModelForm):
     class Meta:
         model = LightShowStep
         fields = (
-            'show', 'light', 'red', 'green', 'blue', 'order',
+            'show', 'light', 'color', 'order',
         )
