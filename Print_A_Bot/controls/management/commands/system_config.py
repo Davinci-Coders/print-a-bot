@@ -66,7 +66,7 @@ class Command(BaseCommand):
         }
 
     def _set_hostname(self, hostname=None):
-        context = self._get_ap_context()
+        context = self._get_ap_context(hostname)
 
         logger.info('setting hostname to {hostname}'.format(**context))
 
@@ -101,7 +101,6 @@ class Command(BaseCommand):
                     logger.info('found process %s but cannot find PID\n\t%s' % (name, line))
 
     # wifi #
-
     def _configure_wifi(self):
         try:
             self.wifi_ssid = Config.objects.get(key='wifi_ssid').value.replace('+', ' ')
@@ -227,7 +226,6 @@ class Command(BaseCommand):
         logger.info('Access point disabled')
 
     # linux system #
-
     @staticmethod
     def _reboot():
         logger.info('Rebooting system')
